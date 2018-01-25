@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zhangchx.spring.dao.UserDao">
+	<resultMap type="zhangchx.spring.bean.User" id="UserMapper">
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="sex" property="sex"/>
+	</resultMap>
+	
+	<select id="selectUser" parameterType="int" resultMap="UserMapper">
+		SELECT * FROM user t where t.id = #{id}
+	</select>
+</mapper>
