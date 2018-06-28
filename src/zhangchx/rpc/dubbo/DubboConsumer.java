@@ -1,4 +1,6 @@
-package zhangchx.dubbo.demo;
+package zhangchx.rpc.dubbo;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ReferenceConfig;
@@ -37,15 +39,23 @@ public class DubboConsumer {
 		return referenceInstance;
 	}
 	
+	private void initBySpring() {
+		ClassPathXmlApplicationContext context =
+                new ClassPathXmlApplicationContext("zhangchx/rpc/dubbo/dubbo-demo-consumer.xml");
+        context.start();
+        System.out.println("consumer start");
+        DubboDemoService demoService = context.getBean(DubboDemoService.class);
+        System.out.println(demoService.sayHello("zhangchx"));
+	}
 	public static void main(String[] args) throws Exception {
 //        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 //                new String[]{"META-INF/spring/dubbo-demo-consumer.xml"});
 //        context.start();
 		DubboConsumer consumer = new DubboConsumer();
-		consumer.init();
+		consumer.initBySpring();
 		
-		DubboDemoService demoService = (DubboDemoService) consumer.getReference().get(); // obtain proxy object for remote invocation
-        String hello = demoService.sayHello("world"); // execute remote invocation
-        System.out.println(hello); // show the result
+//		DubboDemoService demoService = (DubboDemoService) consumer.getReference().get(); // obtain proxy object for remote invocation
+//        String hello = demoService.sayHello("world"); // execute remote invocation
+//        System.out.println(hello); // show the result
     }
 }

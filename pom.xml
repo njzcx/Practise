@@ -54,6 +54,13 @@
 			<artifactId>jedis</artifactId>
 			<version>2.1.0</version>
 		</dependency>
+		<!-- tair-client -->
+		<dependency>
+			<groupId>com.taobao.tair</groupId>
+			<artifactId>tair-client</artifactId>
+			<version>2.3.5</version>
+		</dependency>
+		
 		
 		<!-- websocket -->
 		<dependency>
@@ -168,6 +175,13 @@
 			<version>4.5.3</version>
 		</dependency>
 		
+		<!-- mq -->
+		<dependency>  
+            <groupId>org.apache.kafka</groupId>  
+            <artifactId>kafka_2.10</artifactId>  
+            <version>0.9.0.0</version>  
+        </dependency>
+		
 		<!-- db分库分表 -->
 		<dependency>
 			<groupId>com.dangdang</groupId>
@@ -187,11 +201,21 @@
 			<version>10.2.0.3.0</version>
 		</dependency> -->
 		
-		<!-- 分布式 -->
+		<!-- RPC分布式 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>2.5.5</version>
+		</dependency>
+		<dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.0.42.Final</version>
 		</dependency>
 		
 	</dependencies>

@@ -1,4 +1,4 @@
-package zhangchx.dubbo.demo;
+package zhangchx.rpc.dubbo;
 
 import java.io.IOException;
 

@@ -1,10 +1,11 @@
-package zhangchx.dubbo.demo;
+package zhangchx.rpc.dubbo;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.ServiceConfig;
-import com.sun.net.ssl.internal.ssl.Provider;
 
 public class DubboProvider {
 	ServiceConfig<DubboDemoService> serviceInstance = null;
@@ -47,12 +48,15 @@ public class DubboProvider {
 		return serviceInstance;
 	}
 	
-	 public static void main(String[] args) throws Exception {
-//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-//                new String[] {"META-INF/spring/dubbo-demo-provider.xml"});
-//        context.start();
+	private void initBySpring() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("zhangchx/rpc/dubbo/dubbo-demo-provider.xml");
+        System.out.println(context.getDisplayName() + ": here");
+        context.start();
+        System.out.println("服务已经启动...");
+	}
+	public static void main(String[] args) throws Exception {
         DubboProvider provider = new DubboProvider();
-        provider.init();
+        provider.initBySpring();
         System.in.read(); // press any key to exit
     }
 }
