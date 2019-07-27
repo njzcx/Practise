@@ -1,5 +1,10 @@
 package zhangchx.jprofiler;
 
+/**
+ * 运行该测试类，使用JProfiler或者其他工具可以获得线程信息
+ * @author Snow
+ *
+ */
 public class JProfilerTest {
 	
 	static class JProfilerInstance {

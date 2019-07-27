@@ -39,13 +39,17 @@ public class DubboConsumer {
 		return referenceInstance;
 	}
 	
-	private void initBySpring() {
+	private void initBySpring() throws Exception {
 		ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("zhangchx/rpc/dubbo/dubbo-demo-consumer.xml");
         context.start();
         System.out.println("consumer start");
-        DubboDemoService demoService = context.getBean(DubboDemoService.class);
-        System.out.println(demoService.sayHello("zhangchx"));
+        int i = 0;
+        while(true) {
+        	DubboDemoService demoService = context.getBean(DubboDemoService.class);
+        	System.out.println(demoService.sayHello("zhangchx" + i++));
+        	Thread.sleep(3000);
+        }
 	}
 	public static void main(String[] args) throws Exception {
 //        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
